@@ -46,4 +46,7 @@ char *myMemset(char *s, char b, unsigned int n);
 char *myStrcpy(char *dest, const char *src);
 ssize_t my_getline(char **lineptr, size_t *n, int fd);
 char *custom_strtok(char *str, const char *delimiters);
+int executeProgramWithPaths(const char *program, char *const argv[],
+		char *path_copy);
+
 #endif

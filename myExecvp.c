@@ -1,4 +1,5 @@
 #include "shell.h"
+
 /**
  * myExecvp - execute a program
  * @program: Name of the program to execute.
@@ -7,11 +8,10 @@
  */
 int myExecvp(const char *program, char *const argv[])
 {
-	char full_path[PATH_MAX];
-	char *dir;
+	char full_path[PATH_MAX], *dir, *path = myGetenv("PATH");
 	int execve_status = -1;
-	char *path = myGetenv("PATH");
 	char *path_copy = myStrdup(path);
+	int result = executeProgramWithPaths(program, argv, path_copy);
 
 	if (program == NULL)
 	{
@@ -34,6 +34,35 @@ int myExecvp(const char *program, char *const argv[])
 		perror("hsh");
 		return (-1);
 	}
+	free(path_copy);
+	if (result != -1)
+	{
+		errno = result;
+		perror("hsh");
+	}
+	else
+	{
+		write(STDERR_FILENO, "hsh: command not found: ", 24);
+		write(STDERR_FILENO, program, myStrlen(program));
+		write(STDERR_FILENO, "\n", 1);
+	}
+	return (-1);
+}
+
+/**
+ * executeProgramWithPaths - search for and execute a program in the PATH
+ * @program: Name of the program to execute.
+ * @argv: Argument vector for the program to be executed.
+ * @path_copy: Copy of the PATH environment variable.
+ * Return: Error status if execution fails, otherwise, it doesn't return.
+ */
+int executeProgramWithPaths(const char *program, char *const argv[],
+		char *path_copy)
+{
+	char full_path[PATH_MAX];
+	char *dir;
+	int execve_status = -1;
+
 	for (dir = strtok(path_copy, ":"); dir != NULL; dir = strtok(NULL, ":"))
 	{
 		myMemset(full_path, 0, PATH_MAX);
@@ -50,17 +79,5 @@ int myExecvp(const char *program, char *const argv[])
 			break;
 		}
 	}
-	free(path_copy);
-	if (execve_status != -1)
-	{
-		errno = execve_status;
-		perror("hsh");
-	}
-	else
-	{
-		write(STDERR_FILENO, "hsh: command not found: ", 24);
-		write(STDERR_FILENO, program, myStrlen(program));
-		write(STDERR_FILENO, "\n", 1);
-	}
-	return (-1);
+	return (execve_status);
 }

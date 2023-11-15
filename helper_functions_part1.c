@@ -36,6 +36,7 @@ char *myGetenv(const char *var_name)
 /**
  * mySetenv - add or modify environment variable
  * @env_args: array of strings
+ * Return: 1 on success
  */
 int mySetenv(char **env_args)
 {
@@ -84,6 +85,7 @@ int mySetenv(char **env_args)
 /**
  * myUnsetenv - Remove an environment variable
  * @env_args: array of entered words
+ * Return: on sucess (1)
  */
 int myUnsetenv(char **env_args)
 {
