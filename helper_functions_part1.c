@@ -64,7 +64,8 @@ int mySetenv(char **env_args)
 				value_index = 0;
 				while (env_args[2][value_index])
 				{
-					environ[env_index][key_index + 1 + value_index] = env_args[2][value_index];
+					environ[env_index][key_index + 1 + value_index]
+						= env_args[2][value_index];
 					value_index++;
 				}
 				environ[env_index][key_index + 1 + value_index] = '\0';
@@ -120,4 +121,3 @@ int myUnsetenv(char **env_args)
 	}
 	return (1);
 }
-

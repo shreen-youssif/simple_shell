@@ -7,7 +7,8 @@
  *
  * Return: void pointer to the newly allocated memory
  */
-void *myRealloc(void *original_ptr, unsigned int current_size, unsigned int new_size)
+void *myRealloc(void *original_ptr, unsigned int current_size,
+		unsigned int new_size)
 {
 	char *new_ptr;
 	char *old_ptr;
@@ -45,7 +46,8 @@ void *myRealloc(void *original_ptr, unsigned int current_size, unsigned int new_
 
 /**
  * myGetchar - Reads a single character from standard input.
- * Return: the character read as an unsigned char cast to an int or EOF on end of file or error
+ * Return: the character read as an unsigned char
+ *		cast to an int or EOF on end of file or error
  */
 int myGetchar(void)
 {
@@ -54,11 +56,11 @@ int myGetchar(void)
 
 	if (readStatus > 0)
 	{
-		return (int)charRead;
+		return ((int)charRead);
 	}
 	else if (readStatus == 0 || readStatus == -1)
 	{
-		return EOF;
+		return (EOF);
 	}
 }
 

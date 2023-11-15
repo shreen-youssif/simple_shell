@@ -49,40 +49,37 @@ const char *myStrchr(const char *s, char c)
  *
  * @str: the string to be duplicated
  *
- * Return: A pointer to the duplicated string, 
+ * Return: A pointer to the duplicated string,
  * or NULL if insufficient memory was available
  */
 char *myStrdup(const char *str)
 {
-    char *duplicateString;
-    int index, length = 0;
+	char *duplicateString;
+	int index, length = 0;
 
-    if (str == NULL)
-    {
-        return (NULL);
-    }
-
-    while (str[length])
-    {
-        length++;
-    }
-
-
-    duplicateString = (char *)malloc(sizeof(char) * (length + 1));
+	if (str == NULL)
+	{
+		return (NULL);
+	}
+	while (str[length])
+	{
+		length++;
+	}
+	duplicateString = (char *)malloc(sizeof(char) * (length + 1));
 
 
-    if (duplicateString == NULL)
-    {
-        return (NULL);
-    }
+	if (duplicateString == NULL)
+	{
+		return (NULL);
+	}
 
-    for (index = 0; index < length; index++)
-    {
-        duplicateString[index] = str[index];
-    }
-    duplicateString[index] = '\0';
+	for (index = 0; index < length; index++)
+	{
+		duplicateString[index] = str[index];
+	}
+	duplicateString[index] = '\0';
 
-    return (duplicateString);
+	return (duplicateString);
 }
 
 /**

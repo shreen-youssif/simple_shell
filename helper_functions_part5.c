@@ -7,20 +7,23 @@
  */
 int myCd(char **args)
 {
-    char *error_message = "myCd: expected argument to \"cd\"\n";
+	char *error_message = "myCd: expected argument to \"cd\"\n";
 
-    if (args[1] == NULL) 
-    {
-         write(STDERR_FILENO, error_message, myStrlen(error_message));
-    } else {
-        if (chdir(args[1]) != 0) {
-            perror("myCd");
-            return -1;
-        }
-    }
-    return 1;
+	if (args[1] == NULL)
+	{
+		write(STDERR_FILENO, error_message, myStrlen(error_message))
+	}
+	else
+	{
+		if (chdir(args[1]) != 0)
+		{
+			perror("myCd");
+			return (-1);
+		}
+	}
+	return (1);
 }
- 
+
 /**
  * myExit - exit the shell
  * @args: List of args. Not really used in this function.
@@ -28,7 +31,7 @@ int myCd(char **args)
  */
 int myExit(char **args)
 {
-    exit(EXIT_SUCCESS);
+	exit(EXIT_SUCCESS);
 }
 
 /**
@@ -38,32 +41,29 @@ int myExit(char **args)
  */
 int myEnv(char **args)
 {
-    extern char **environ;
-    int i = 0;
+	int i = 0;
 
-    while (environ[i]) {
-        myPuts(environ[i]);
-        myPuts("\n");
-        i++;
-    }
-    return 1;
+	while (environ[i])
+	{
+		myPuts(environ[i]);
+		myPuts("\n");
+		i++;
+	}
+	return (1);
 }
 /**
- * own_help - display help for builtin commands
+ * myHelp - display help for builtin commands
  * @args: List of args. Not really used in this function.
  * Return: 1 if successful.
  */
 int myHelp(char **args)
 {
-    myPuts("Type program names and arguments, and hit enter.\n");
-    myPuts("The following are built in:\n");
-
-    myPuts("  cd\n");
-    myPuts("  exit\n");
-    myPuts("  env\n");
-    myPuts("  help\n");
-
-    myPuts("Use the man command for information on other programs.\n");
-    return (1);
+	myPuts("Type program names and arguments, and hit enter.\n");
+	myPuts("The following are built in:\n");
+	myPuts("  cd\n");
+	myPuts("  exit\n");
+	myPuts("  env\n");
+	myPuts("  help\n");
+	myPuts("Use the man command for information on other programs.\n");
+	return (1);
 }
-

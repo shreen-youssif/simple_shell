@@ -1,7 +1,13 @@
 #include "shell.h"
+/**
+ * myStrtok - divide command into argumnets
+ * @str: the string to be divided
+ * @delimiters: the delimiter characters
+ * Return: pointer to the tokinized string
+ */
 char *myStrtok(char *str, const char *delimiters)
 {
-	static char *currentPosition = NULL;
+	static char *currentPosition;
 	char *start = currentPosition;
 
 	if (str != NULL)
@@ -10,7 +16,7 @@ char *myStrtok(char *str, const char *delimiters)
 	}
 	else if (currentPosition == NULL)
 	{
-		return NULL;
+		return (NULL);
 	}
 	while (*currentPosition && strchr(delimiters, *currentPosition))
 	{
@@ -18,7 +24,7 @@ char *myStrtok(char *str, const char *delimiters)
 	}
 	if (*currentPosition == '\0')
 	{
-		return NULL;
+		return (NULL);
 	}
 	while (*currentPosition && !strchr(delimiters, *currentPosition))
 	{
@@ -29,5 +35,5 @@ char *myStrtok(char *str, const char *delimiters)
 		*currentPosition = '\0';
 		currentPosition++;
 	}
-	return start;
+	return (start);
 }

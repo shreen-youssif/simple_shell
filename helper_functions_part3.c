@@ -45,12 +45,12 @@ char *concatThree(char *name, char *sep, char *value)
  */
 int myStrcmp(char *str1, char *str2)
 {
-	while(*str1 && *str2 && *str1 == *str2) {
-    str1++;
-    str2++;
-  }
-
-  return *str1 - *str2;
+	while (*str1 && *str2 && *str1 == *str2)
+	{
+		str1++;
+		str2++;
+	}
+	return (*str1 - *str2);
 }
 /**
  * myStrlen - it gives the length of a string
