@@ -28,6 +28,10 @@ int check_command(char **cmd_params)
 	{
 		return (-1);
 	}
+	if (myStrcmp(cmd_params[0], "exit") == 0)
+	{
+		return (myExit(cmd_params));
+	}
 	for (; index < sizeof(command_list) / sizeof(char *); index++)
 	{
 		if (myStrcmp(cmd_params[0], command_list[index]) == 0)
