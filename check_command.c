@@ -22,7 +22,7 @@ int check_command(char **cmd_params)
 	&myExit,
 	&mySetenv,
 	&myUnsetenv};
-	int index = 0;
+	size_t index = 0;
 
 	if (cmd_params[0] == NULL)
 	{

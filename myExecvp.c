@@ -8,8 +8,7 @@
  */
 int myExecvp(const char *program, char *const argv[])
 {
-	char full_path[PATH_MAX], *dir, *path = myGetenv("PATH");
-	int execve_status = -1;
+	char *path = myGetenv("PATH");
 	char *path_copy = myStrdup(path);
 	int result = executeProgramWithPaths(program, argv, path_copy);
 

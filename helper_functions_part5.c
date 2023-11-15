@@ -31,6 +31,7 @@ int myCd(char **args)
  */
 int myExit(char **args)
 {
+	(void)args;
 	exit(EXIT_SUCCESS);
 }
 
@@ -43,6 +44,7 @@ int myEnv(char **args)
 {
 	int i = 0;
 
+	(void)args;
 	while (environ[i])
 	{
 		myPuts(environ[i]);
@@ -58,6 +60,7 @@ int myEnv(char **args)
  */
 int myHelp(char **args)
 {
+	(void)args;
 	myPuts("Type program names and arguments, and hit enter.\n");
 	myPuts("The following are built in:\n");
 	myPuts("  cd\n");

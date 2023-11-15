@@ -62,5 +62,6 @@ int myGetchar(void)
 	{
 		return (EOF);
 	}
+	return (EOF);
 }
 
