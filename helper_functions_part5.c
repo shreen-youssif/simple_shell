@@ -11,7 +11,7 @@ int myCd(char **args)
 
 	if (args[1] == NULL)
 	{
-		write(STDERR_FILENO, error_message, myStrlen(error_message))
+		write(STDERR_FILENO, error_message, myStrlen(error_message));
 	}
 	else
 	{

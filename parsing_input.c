@@ -7,7 +7,7 @@
  */
 char *parsing_input(void)
 {
-	int old_size, character, int buffer_size = 1024;
+	int old_size, character, buffer_size = 1024;
 	int i = 0;
 	char *line = malloc(sizeof(char) * buffer_size);
 	char *error_message = "allocation error in parsing_input";
