@@ -31,8 +31,13 @@ int myCd(char **args)
  */
 int myExit(char **args)
 {
-	(void)args;
-	exit(EXIT_SUCCESS);
+	int status = 0;
+
+	if (args[1] != NULL)
+	{
+	status = myAtoi(args[1]);
+	}
+	exit(status);
 }
 
 /**

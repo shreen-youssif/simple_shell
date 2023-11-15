@@ -48,5 +48,5 @@ ssize_t my_getline(char **lineptr, size_t *n, int fd);
 char *custom_strtok(char *str, const char *delimiters);
 int executeProgramWithPaths(const char *program, char *const argv[],
 		char *path_copy);
-
+int myAtoi(const char *str);
 #endif
